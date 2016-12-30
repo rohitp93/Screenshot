@@ -1,0 +1,57 @@
+                                        Screenshot As a Service
+
+Intro
+-----
+This service takes input as a string of URLs with each URL separated by ';' and produces a screenshot of each URL
+in the form of a PNG file.
+The user then inputs the desired file location to put the created PNG files
+The URL, file location and PNG file are also stored in a MySQL table for reference
+It is a complete backend service written in java as a Maven project with the help of IntelliJ IDE
+
+Requirements
+------------
+The service requires the host to have a working MySQL server and Java (version 8).
+I took the liberty of using Mozilla Firefox as the web driver with the help of Selenium
+used to create screenshots
+Gecko driver needs to be downloaded to support Selenium to create the screenshots
+The dependencies are downloaded locally after compilation
+
+Initialize
+----------
+Compile the entire project so that dependencies are imported, open terminal and run
+=> # mvn install
+
+This step imports and install all the necessary dependencies and compiles all source files
+
+Execution
+---------
+The code is divided into 3 parts namely CreateDB, Insert and Display
+
+1. CreateDB
+To run this part , open terminal and run
+=> # mvn exec:java@CreateDB
+
+This step creates a Database called 'screen' with a table called 'test' on local MySQL.
+It uses JDBC Java MySQL driver to connect to the MySQL server using SQL connection statements and
+SQL queries to create the database and table
+
+2. Insert
+To run this part , open terminal and run
+=> # mvn exec:java@Insert
+
+This step takes string containing URLs(separated by ';') and a file location as input.
+The file location and URL are inserted into the table
+Selenium is used as the web API and launches a firefox web driver using gecko driver.
+The URL is accessed and screenshot is taken and stored in the given location.
+The PNG file is also stored in the MySQl table in BLOB format.
+
+3. Display
+To run this part , open terminal and run
+=> # mvn exec:java@Display
+
+This step also takes string containing URLs(separated by ';')
+The file location of each PNG file is retrieved from the MySQL table and the PNG files are opened and viewed using JFrames
+Once all PNG files are closed the process is exited
+
+Thank you
+Please provide any feedback
