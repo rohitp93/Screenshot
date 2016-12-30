@@ -53,5 +53,3 @@ This step also takes string containing URLs(separated by ';')
 The file location of each PNG file is retrieved from the MySQL table and the PNG files are opened and viewed using JFrames
 Once all PNG files are closed the process is exited
 
-Thank you
-Please provide any feedback
